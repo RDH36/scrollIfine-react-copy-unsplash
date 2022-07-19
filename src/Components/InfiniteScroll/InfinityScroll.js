@@ -99,31 +99,23 @@ export default function InfinityScroll() {
         <label htmlFor="search">Votre rechercher</label>
         <input type="text" onChange={handelSearch} id="search" ref={inpuRef} />
       </form>
-      {loading ? (
-        <div class="d-flex justify-content-center">
-          <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
+      <div className="card-list">
+        <div>
+          {dataImg[0].map((img) => (
+            <img src={img} key={uuidv4()} alt="splat img" />
+          ))}
         </div>
-      ) : (
-        <div className="card-list">
-          <div>
-            {dataImg[0].map((img) => (
-              <img src={img} key={uuidv4()} alt="splat img" />
-            ))}
-          </div>
-          <div>
-            {dataImg[1].map((img) => (
-              <img src={img} key={uuidv4()} alt="splat img" />
-            ))}
-          </div>
-          <div>
-            {dataImg[2].map((img) => (
-              <img src={img} key={uuidv4()} alt="splat img" />
-            ))}
-          </div>
+        <div>
+          {dataImg[1].map((img) => (
+            <img src={img} key={uuidv4()} alt="splat img" />
+          ))}
         </div>
-      )}
+        <div>
+          {dataImg[2].map((img) => (
+            <img src={img} key={uuidv4()} alt="splat img" />
+          ))}
+        </div>
+      </div>
       <div className="d-flex justify-content-center mt-5">
         <div className="spinner-border" role="status">
           <span className="visually-hidden">Loading...</span>
