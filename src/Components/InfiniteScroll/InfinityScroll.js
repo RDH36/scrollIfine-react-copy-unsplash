@@ -7,7 +7,6 @@ export default function InfinityScroll() {
   const [dataImg, setDataImg] = useState([[], [], []]);
   const [pageIndex, setPageIndex] = useState(1);
   const [searhState, setSearhState] = useState("random");
-  const [loading, setLoading] = useState(true);
 
   const infiniteFecthData = () => {
     fetch(
@@ -35,7 +34,6 @@ export default function InfinityScroll() {
       });
   };
   const searchFecthData = () => {
-    setLoading(true);
     fetch(
       `https://api.unsplash.com/search/photos?page=${pageIndex}&per_page=30&query=${searhState}&client_id=7HJ5JpCyTzY9J713UniwfXC9I9M4MwdkOUP3lW8y0qQ`
     )
@@ -54,7 +52,6 @@ export default function InfinityScroll() {
         }
 
         setDataImg(newFreshState);
-        setLoading(false);
       });
   };
   const handelSearch = (e) => {
@@ -87,7 +84,8 @@ export default function InfinityScroll() {
   const infiniteCheck = () => {
     console.log("hello check");
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-    if (scrollHeight - scrollTop <= clientHeight) {
+    console.log(scrollHeight - scrollTop, clientHeight);
+    if (scrollHeight - 60 - scrollTop <= clientHeight) {
       console.log("bottom");
       setPageIndex((pageIndex) => pageIndex + 1);
     }
